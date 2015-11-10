@@ -512,7 +512,11 @@
 					}
 				}
 
-				if (!replacement)
+				if (typeof replacement === 'function') {
+					replacement = replacement();
+				}
+
+				if (!replacement || typeof replacement !== 'string')
 					return false;
 
 				beforeReplace();
